@@ -18,6 +18,7 @@
 .header {
 	text-align: right;
 	margin: 8px 8px 8px 20px;
+	color: #555626;
 }
 
 .header > * {
