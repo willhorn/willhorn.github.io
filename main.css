@@ -12,12 +12,9 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
 }
 
 .header {
-	text-align: right;
-	margin: 8px 8px 8px 20px;
 	color: #555626;
 }
 
@@ -31,4 +28,25 @@ h1 {
 
 .io_header {
   color: #4063A9;
+}
+
+@media all and (min-width: 400px) {
+	.header {
+		text-align: right;
+		margin: 8px 8px 8px 20px;
+	}
+	.header_row {
+		justify-content: space-between;
+	}
+}
+
+@media all and (max-width: 399px) {
+	.header {
+		text-align: center;
+		margin: 8px;
+	}
+	.header_row {
+		flex-direction: column;
+		justify-content: center;
+	}
 }
