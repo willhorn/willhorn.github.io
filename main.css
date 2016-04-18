@@ -35,6 +35,10 @@ body {
   padding: 20px;
 }
 
+.navigation a:hover {
+  background: #444;
+}
+
 .header {
   color: gray;
   text-align: right;
