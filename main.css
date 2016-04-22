@@ -40,21 +40,22 @@ body {
 }
 
 .header {
-  color: gray;
-  text-align: right;
   margin: 8px;
 }
 
 .header > * {
   margin: 0px;
+  color: gray;
+  text-align: right;
 }
 
-h1 {
+h1, h2 {
   font-size: 40px;
 }
 
 .io_header {
   color: #4063A9;
+  font-size: 40px;
 }
 
 .logo {
@@ -65,12 +66,27 @@ h1 {
   margin: 16px;
 }
 
-h2 {
-  font-size: 30px;
+ul {
+  list-style: none;
 }
 
-iframe {
-  width: 100%;
+ul.goals li {
+  margin: 8px;
+  font-size: 18px;
+  color: #333;
+}
+
+ul.goals li:before {
+  content: "\00274f  ";
+}
+
+ul.goals li.completed_goal:before {
+  content: "\002713  ";
+}
+
+li a {
+  text-decoration: none;
+  color: #4063A9;
 }
 
 @media all and (max-width: 800px) {
