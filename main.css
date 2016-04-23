@@ -96,7 +96,7 @@ li a {
 }
 
 @media all and (max-width: 400px) {
-  .header {
+  .header > * {
     text-align: center;
   }
   .flex_container {
