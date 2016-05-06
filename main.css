@@ -9,6 +9,10 @@ body {
 }
 
 .flex_container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
@@ -62,36 +66,72 @@ h1, h2 {
   margin: 8px;
 }
 
-.content {
-  margin: 16px;
-}
-
-ul {
+.goals_content, .goals_list {
   list-style: none;
+  margin: 0px;
+  padding: 0px;
 }
 
-ul.goals li {
-  margin: 8px;
-  font-size: 18px;
-  color: #333;
+.goals_content {
+  flex-flow: column wrap;
+  -webkit-flex-flow: column wrap;
+  width: 100%;
+  max-height: 1200px;
+  justify-content: flex-start;
+  /* align-content: space-around; */
 }
 
-ul.goals li:before {
-  content: "\00274f  ";
+.goals_list {
+  background-color: rgba(255,255,255,0.4);
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-ul.goals li.completed_goal:before {
-  content: "\002713  ";
+.goals_group_title {
+  color: white;
+  padding: 10px;
+  margin: 0px;
 }
 
-li a {
-  text-decoration: none;
-  color: #4063A9;
+.goal {
+  color: black;
+  margin: 10px;
+  background-color: rgba(255,255,255,0.4);
+  padding: 10px;
+}
+
+.goals_content a {
+  color: inherit;
+}
+
+.goal:first-child {
+  margin-top: 0px;
+}
+
+.goal:last-child {
+  margin-bottom: 0px;
+}
+
+.goal:before {
+/*   content: "\025FB  "; */
+  content: "\025A1  ";
+}
+
+.completed_goal:before {
+  content: "\02713  ";
+}
+
+.goals_group {
+  margin: 10px;
+  background-color: #375B9A;
 }
 
 @media all and (max-width: 800px) {
   .navigation {
     justify-content: space-around;
+  }
+  .goals_content {
+    max-height: none;
   }
 }
 
@@ -99,7 +139,7 @@ li a {
   .header > * {
     text-align: center;
   }
-  .flex_container {
+  .header_row, .navigation {
     -webkit-flex-flow: column wrap;
     flex-flow: column wrap;
     justify-content: center;
@@ -115,5 +155,17 @@ li a {
   }
   .navigation a {
     text-align: center;
+  }
+}
+
+@media all and (min-width: 1100px) {
+  .goals_content {
+    max-height: 750px;
+  }
+  #course_goals {
+    order: -2;
+  }
+  #blog_goals {
+    order: -1;
   }
 }
