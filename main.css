@@ -1,4 +1,4 @@
-* {
+.header_row, nav {
   /* border: 1px solid red !important; */
   font-family: 'Lato', sans-serif;
   font-weight: 300;
@@ -70,6 +70,10 @@ h1, h2 {
   margin: 8px;
 }
 
+#main_content {
+  font-family: 'Helvetica', sans-serif;
+}
+
 .goals_content, .goals_list {
   list-style: none;
   margin: 0px;
@@ -80,32 +84,30 @@ h1, h2 {
   flex-flow: column wrap;
   -webkit-flex-flow: column wrap;
   width: 100%;
-  max-height: 1200px;
+  max-height: 900px;
   justify-content: flex-start;
   /* align-content: space-around; */
 }
 
 .goals_list {
-  background-color: rgba(255,255,255,0.4);
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
 .goals_group_title {
-  color: white;
+  color: #444;
   padding: 10px;
   margin: 0px;
 }
 
 .goal {
-  color: black;
+  color: #444;
   margin: 10px;
-  background-color: rgba(255,255,255,0.4);
-  padding: 10px;
 }
 
 .goals_content a {
-  color: inherit;
+  color: #4063A9;
+  text-decoration: none;
 }
 
 .goal:first-child {
@@ -127,7 +129,6 @@ h1, h2 {
 
 .goals_group {
   margin: 10px;
-  background-color: #375B9A;
 }
 
 #course_goals {
