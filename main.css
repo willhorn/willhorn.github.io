@@ -74,6 +74,16 @@ h1, h2 {
   font-family: 'Helvetica', sans-serif;
 }
 
+#main_content a {
+  color: #4063A9;
+  text-decoration: none;
+}
+
+p {
+  font-size: 18px;
+  margin: 20px;
+}
+
 .goals_content, .goals_list {
   list-style: none;
   margin: 0px;
@@ -103,11 +113,6 @@ h1, h2 {
 .goal {
   color: #444;
   margin: 10px;
-}
-
-.goals_content a {
-  color: #4063A9;
-  text-decoration: none;
 }
 
 .goal:first-child {
