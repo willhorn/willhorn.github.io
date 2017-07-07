@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="main.css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
   <link rel="icon" type="image/png" href="images/logo_rounded_16px.png">
   <title>Will/Horn</title>
 </head>
@@ -19,10 +19,10 @@
   </header>
   <nav>
     <ul class="flex_container navigation">
-      <li id="nav_about">
+      <li id="nav_about" class="">
         <a href="index.html">About</a>
       </li>
-      <li id="nav_blog">
+      <li id="nav_blog" class="">
         <a href="#">Blog</a>
       </li>
       <li id="nav_goals" class="nav_selected">
@@ -31,14 +31,7 @@
     </ul>
   </nav>
   <section id="main_content" class="goals_content flex_container">
-    <article class="goals_group" id="blog_goals">
-      <h3 class="goals_group_title">Blog posts</h3>
-      <ul class="goals_list">
-        <li class="goal">creating the logo</li>
-        <li class="goal">MapReduce mean algorithm</li>
-      </ul>
-    </article>
-    <article class="goals_group" id="course_goals">
+    <article class="goals_group" id="course_goals" style="order: 0;">
       <h3 class="goals_group_title">Udacity's <a href=
       "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001">Front-End Web Developer</a> courses</h3>
       <ul class="goals_list">
@@ -84,14 +77,14 @@
         </li>
       </ul>
     </article>
-    <article class="goals_group" id="project_goals">
+    <article class="goals_group" id="project_goals" style="order: 1;">
       <h3 class="goals_group_title">Projects</h3>
       <ul class="goals_list">
         <li class="goal">Sudoku solver in JavaScript</li>
         <li class="goal">Google maps API restaurant search</li>
       </ul>
     </article>
-    <article class="goals_group" id="website_goals">
+    <article class="goals_group" id="website_goals" style="order: 2;">
       <h3 class="goals_group_title">Website improvements</h3>
       <ul class="goals_list">
         <li class="goal completed_goal">About page</li>
@@ -106,6 +99,13 @@
         <li class="goal">responsive margins</li>
         <li class="goal completed_goal">center content on large viewports</li>
         <li class="goal completed_goal">nav dark on respective pages</li>
+      </ul>
+    </article>
+    <article class="goals_group" id="blog_goals" style="order: 3;">
+      <h3 class="goals_group_title">Blog posts</h3>
+      <ul class="goals_list">
+        <li class="goal">creating the logo</li>
+        <li class="goal">MapReduce mean algorithm</li>
       </ul>
     </article>
   </section>

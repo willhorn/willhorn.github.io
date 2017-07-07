@@ -136,22 +136,6 @@ p {
   margin: 10px;
 }
 
-#course_goals {
-  order: 0;
-}
-
-#blog_goals {
-  order: 3;
-}
-
-#project_goals {
-  order: 1;
-}
-
-#website_goals {
-  order: 2;
-}
-
 @media all and (max-width: 800px) {
   .navigation {
     justify-content: space-around;
