@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="generator" content="HTML Tidy for HTML5 for Mac OS X version 5.4.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+  <link rel="icon" type="image/png" href="images/logo_rounded_16px.png">
+  <title>Will/Horn</title>
+</head>
+<body>
+  <header class="flex_container header_row">
+    <img class="logo" src="images/logo_80px.png" alt="logo">
+    <div class="header">
+      <h1>W<span class="io_header">I</span>LL<span class="io_header">/</span>H<span class="io_header">O</span>RN</h1>
+      <h3>in dev mode</h3>
+    </div>
+  </header>
+  <nav>
+    <ul class="flex_container navigation">
+      <li id="nav_about" class="">
+        <a href="index.html">About</a>
+      </li>
+      <li id="nav_blog" class="nav_selected">
+        <a href="blog.html">Blog</a>
+      </li>
+      <li id="nav_goals" class="">
+        <a href="goals.html">Goals</a>
+      </li>
+    </ul>
+  </nav>
+  <section id="main_content" class="">
+    <article>
+      <h1>Check Assumptions</h1>
+      <h5>Written: June 29, 2017</h5>
+      <h5>Last Edited: July 8, 2017</h5>
+      <p>I learned this lesson (again) last night. I've been using <a href="https://github.com/scrapy/scrapy">Scrapy</a> to create
+      a spider with the goal of gathering data from <a href="http://www.c-uphd.org/food-inspection-reports.html">CUPHD's health
+      inspection reports database</a>. Inspection reports are grouped by facility and can be found via two different search
+      mechanisms. The endpoint for both is http://il.healthinspections.us/champaign/search.cfm. The first mechanism allows for
+      searches by the first character in the name of the facility. In other words, I could search for all facilities beginning with
+      the letter 'A'. The second, more advanced search mechanism includes several fields. Among them are the start and end date,
+      which represent an inspection date range. They default to the entire available range, which is January 1, 2008 to present.
+      They are passed as the GET parameters <code>sd</code> and <code>ed</code> in the format MM/DD/YYYY.</p>
+      <p>My primary focus thus far has been the initial crawl, which will traverse all inspections in the database to-date. I've
+      know since beginning that I'll eventually want a cron job to periodically check for new reports and add them to my dataset.
+      The second search mechanism lends itself well to an incremental crawl by date, and I knew I could <a href=
+      "https://docs.scrapy.org/en/latest/topics/spiders.html#spider-arguments">easily pass parameters to my Scrapy spider</a>. As
+      long as I used the advanced search mechanism during development, I assumed I'd be in a good place to parameterize the crawler
+      later.</p>
+      <p>Last night I was ready to parameterize the crawler. After completing my changes locally, I began testing. I quickly
+      discovered that the inspection start and end dates did not work as expected -- perhaps not all. I knew from early testing
+      that facility 587 had an inspection on February 26, 2008. So I set the start date to January 1, 2008 and the end date to
+      January 1, 2009. I expected that report and likely a few others to be found. No reports were found. I could see the request
+      made by the crawler in the logs. I pasted the request into my browser. No results. Finally, thinking I may have formatted the
+      dates or URL incorrectly, I used the database's UI to enter the inspection date range and run the search. Still no
+      results.</p>
+      <p>I tried several more date ranges using the UI. It's clear that it's doing some filtering, but I haven't found a pattern.
+      My plan at this point is to check if the date parameters work as expected for recent inspections. That's all I need for the
+      incremental crawls to work anyway. If they don't, I won't have a reliable way of knowing whether or not a facility has had an
+      inspection since the last crawl, and I'll need to the crawler to visit every facility page to check for links to recent
+      inspection reports.</p>
+    </article>
+  </section>
+</body>
+</html>
