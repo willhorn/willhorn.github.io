@@ -136,6 +136,11 @@ p {
   margin: 10px;
 }
 
+.blog-dates {
+  font-size: 12px;
+  font-style: italic;
+}
+
 @media all and (max-width: 800px) {
   .navigation {
     justify-content: space-around;
