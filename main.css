@@ -1,11 +1,17 @@
 .header_row, nav {
   /* border: 1px solid red !important; */
   font-family: 'Lato', sans-serif;
-  font-weight: 300;
+  font-weight: 100;
 }
 
 body {
   margin: 0px;
+  font-weight: 100;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
 }
 
 .flex_container {
@@ -58,6 +64,11 @@ body {
 }
 
 h1, h2 {
+  font-size: 30px;
+  font-weight: 100;
+}
+
+.header-primary {
   font-size: 40px;
 }
 
@@ -82,6 +93,20 @@ h1, h2 {
 p {
   font-size: 18px;
   margin: 20px;
+}
+
+pre {
+  margin: 20px;
+}
+
+pre > code {
+  overflow: auto;
+  height: 400px;
+  width: 100%;
+  display: inline-block;
+  background: black;
+  color: white;
+  padding: 10px;
 }
 
 .goals_content, .goals_list {

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="generator" content="HTML Tidy for HTML5 for Mac OS X version 5.4.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../main.css">
+  <link href='https://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+  <link rel="icon" type="image/png" href="../images/logo_rounded_16px.png">
+  <title>Will/Horn</title>
+</head>
+<body>
+  <header class="flex_container header_row">
+    <img class="logo" src="../images/logo_80px.png" alt="logo">
+    <div class="header">
+      <h1 class="header-primary">W<span class="io_header">I</span>LL<span class="io_header">/</span>H<span class=
+      "io_header">O</span>RN</h1>
+      <h3 class="header-secondary">in dev mode</h3>
+    </div>
+  </header>
+  <nav>
+    <ul class="flex_container navigation">
+      <li id="nav_about" class="">
+        <a href="../index.html">About</a>
+      </li>
+      <li id="nav_blog" class="nav_selected">
+        <a href="../blog.html">Blog</a>
+      </li>
+      <li id="nav_goals" class="">
+        <a href="../goals.html">Goals</a>
+      </li>
+    </ul>
+  </nav>
+  <section id="main_content" class="">
+    <article>
+      <h1>Logo Design</h1>
+      <p>The design of the logo on this site is based on a "William" logo I created in a high school class using AutoCAD. I tried
+      using several different design applications including Pixelmator, Assembly (iOS), and a couple of other iPhone apps. I
+      ultimately decided to use Wolfram Language for its mathematical precision.</p>
+      <p>The desired properties of the logo were that:</p>
+      <ol>
+        <li>the logo be contained within a perfect square,</li>
+        <li>the top left corner of the enclosing square intersect with the right-most boundary of the left-most portion of the
+        "W",</li>
+        <li>the "W" be perfectly centered,</li>
+        <li>the "dot" on the "i" be a perfect square,</li>
+        <li>all segments of the "W" have the same width <code>δ</code>,</li>
+        <li>the distance between the "dot" and the base of the "i" <code>i</code> be less than or equal to <code>δ</code>, and</li>
+        <li>all segments be at the same angle <code>ϴ</code> (or its supplement) with respect to the x-axis.</li>
+      </ol>
+      <p>Given these contraints, I dusted off my memories of trigonometry and went to work putting all points of interest in terms
+      of <code>δ</code>, <code>ϴ</code>, and <code>i</code>:</p>
+      <p><img alt="Trigonometric Calculations" src="../images/logo_work.jpg"></p>
+      <p>I then <code>Simplify[]</code>'d the points using Wolfram Language and put them in a <code>Manipulate[]</code> so I could
+      quickly and easily see how the logo looked with different values of <code>δ</code>, <code>ϴ</code>, and <code>i</code>. I
+      also created a variable in the <code>Manipulate[]</code> for the background color. Initially, I created polygons for the five
+      rectangular segments of the "W". However, I wanted the "W" itself to be transparent, so I ended up creating polygons for the
+      surrounding "background". There was no need to keep the polygons within the enclosing square region since I could set the
+      plot range to clip everything outside of that square.</p>
+      <p>Here is the final code used to create my logo:</p>
+      <pre><code>Manipulate[
+  With[{
+      lowerEndPoint = {
+        (3 - 4*Cot[ϴ] + δ*Csc[ϴ] + 2*δ*Sin[ϴ])/2,
+        (-2 - 2*δ*Cos[ϴ] + δ*Sec[ϴ] + Tan[ϴ])/2
+      },
+      upperEndPoint = {
+        (3 - 4*Cot[ϴ] + δ*Csc[ϴ])/2,
+        (-2 + δ*Sec[ϴ] + Tan[ϴ])/2
+      }
+    },
+    Graphics[{
+        EdgeForm[],
+        c,
+        Polygon[{
+          {
+            {0, 1 - δ*Sec[ϴ]},
+            {Cot[ϴ] - δ*Csc[ϴ], 0},
+            {0, 0}
+          },
+          {
+            {Cot[ϴ], 0},
+            {1/2, (-2 + Tan[ϴ])/2},
+            {1 - Cot[ϴ], 0}
+          },
+          {
+            {1 - Cot[ϴ] + δ*Csc[ϴ], 0},
+            lowerEndPoint + {(2 + δ)*Cos[ϴ], (2 + δ)*Sin[ϴ]},
+            {1, 0}
+          },
+          {
+            lowerEndPoint,
+            upperEndPoint,
+            upperEndPoint + {i*Cos[ϴ], i*Sin[ϴ]},
+            lowerEndPoint + {i*Cos[ϴ], i*Sin[ϴ]}
+          },
+          {
+            upperEndPoint, {1 - Cot[ϴ] + (1/2)*δ*Csc[ϴ], (δ*Sec[ϴ])/2},
+            {1 - 2*Cot[ϴ] + δ*Csc[ϴ], 1},
+            upperEndPoint + {(2 + δ)*Cos[ϴ], (2 + δ)*Sin[ϴ]}
+          },
+          {
+            lowerEndPoint + {(i + δ)*Cos[ϴ], (i + δ)*Sin[ϴ]},
+            upperEndPoint + {(i + δ)*Cos[ϴ], (i + δ)*Sin[ϴ]},
+            upperEndPoint + {(2 + δ)*Cos[ϴ], (2 + δ)*Sin[ϴ]},
+            lowerEndPoint + {(2 + δ)*Cos[ϴ], (2 + δ)*Sin[ϴ]}
+          },
+          {
+            {1 - 2*Cot[ϴ], 1},
+            {(1 - δ*Csc[ϴ])/2, (-2 + δ*Sec[ϴ] + Tan[ϴ])/2},
+            {Cot[ϴ] - (δ*Csc[ϴ])/2, (δ*Sec[ϴ])/2},
+            {0, 1}
+          }
+        }]
+      },
+      PlotRange -&amp;gt; {{0, 1}, {0, 1}},
+      Background -&amp;gt; None
+    ]
+  ],
+  {
+    {δ, 0.1785}, 0, 1/4},
+    {{ϴ, 1.215}, (3*Pi)/8, (5*Pi)/12},
+    {{i, 0.1785}, 0, δ},
+    {c, RGBColor["#3E65A4"]},
+    LabelStyle -&amp;gt; "Text"
+  ]
+]
+</code></pre>
+      <p>You can see this code in action via <a href=
+      "https://www.wolframcloud.com/objects/user-19f75108-9435-49b6-8a25-ff7099d88593/Logo">this Wolfram Cloud deployment</a>. It
+      looks like this:</p>
+      <p><img alt="Logo Manipulate" src="../images/logo_manipulate.jpg"></p>
+      <p class="blog-dates">Published: Jul 18, 2017 03:16:21 UTC<br>
+      Last edited: Jul 19, 2017 02:10:13 UTC</p>
+    </article>
+  </section>
+</body>
+</html>
